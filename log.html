@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Waste — Wastebin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="wrap nav">
+            <a href="index.html" class="brand"><span class="dot"></span>Wastebin</a>
+            <nav class="nav-links">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="log.html" style="color:var(--stamp-red);">+ New Log</a>
+            </nav>
+        </div>
+    </header>
+
+    <section style="padding-top:40px; padding-bottom:80px;">
+        <div class="wrap">
+            <div style="max-width:560px; margin:0 auto;">
+                <div class="eyebrow">Log Waste</div>
+                <h2 style="font-family:var(--display); font-size:2rem; margin:0 0 8px;">10 seconds. That's it.</h2>
+                <p style="color:#cfc7b3; margin-bottom:32px;">Fill in what went to waste, and we'll handle the math.</p>
+
+                <!-- LOG FORM -->
+                <form id="wasteForm" style="background:var(--paper); color:var(--ink); padding:32px; border-radius:4px;">
+                    <!-- Dish -->
+                    <div style="margin-bottom:20px;">
+                        <label style="font-family:var(--mono); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:6px;">Dish / Item</label>
+                        <input type="text" id="dish" placeholder="e.g. Rice, Sukuma Wiki, Chapati" required style="width:100%; padding:12px; border:1px solid var(--line); font-family:var(--body); font-size:1rem; background:white; border-radius:2px;">
+                    </div>
+
+                    <!-- Quantity -->
+                    <div style="margin-bottom:20px;">
+                        <label style="font-family:var(--mono); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:6px;">Quantity (kg)</label>
+                        <input type="number" id="quantity" placeholder="e.g. 1.5" step="0.1" min="0" required style="width:100%; padding:12px; border:1px solid var(--line); font-family:var(--body); font-size:1rem; background:white; border-radius:2px;">
+                    </div>
+
+                    <!-- Reason -->
+                    <div style="margin-bottom:20px;">
+                        <label style="font-family:var(--mono); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:6px;">Reason for Waste</label>
+                        <select id="reason" required style="width:100%; padding:12px; border:1px solid var(--line); font-family:var(--body); font-size:1rem; background:white; border-radius:2px;">
+                            <option value="">Select a reason...</option>
+                            <option value="Over-prepped">Over-prepped</option>
+                            <option value="Spoiled">Spoiled</option>
+                            <option value="Didn't sell">Didn't sell</option>
+                            <option value="Overcooked">Overcooked</option>
+                            <option value="Customer returned">Customer returned</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Staff Name -->
+                    <div style="margin-bottom:24px;">
+                        <label style="font-family:var(--mono); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:6px;">Logged by (optional)</label>
+                        <input type="text" id="staff" placeholder="Your name" style="width:100%; padding:12px; border:1px solid var(--line); font-family:var(--body); font-size:1rem; background:white; border-radius:2px;">
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit" style="background:var(--stamp-red); color:var(--paper); border:none; padding:14px 32px; font-family:var(--mono); font-size:0.85rem; text-transform:uppercase; letter-spacing:0.06em; cursor:pointer; width:100%; border-radius:2px; transition:transform 0.15s;">
+                        📝 Log Waste
+                    </button>
+
+                    <!-- Success Message -->
+                    <div id="successMsg" style="display:none; margin-top:16px; background:#4B7A52; color:white; padding:12px; text-align:center; border-radius:2px;">
+                        ✅ Waste logged! <a href="dashboard.html" style="color:white; font-weight:bold;">View Dashboard →</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>

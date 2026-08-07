@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wastebin — know what's actually going in the bin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand"><span class="dot"></span>Wastebin</div>
+    <nav class="nav-links">
+      <a href="#problem">The Problem</a>
+      <a href="#how">How It Works</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="log.html" class="btn-nav">+ Log Waste</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="tiles"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Kitchen Waste, Tracked</div>
+      <h1>Your kitchen already knows<br>what's going in the bin.<br><span class="redword">Nobody's writing it down.</span></h1>
+      <p class="lede">Wastebin is a 10-second log for busy staff and a dashboard that turns it into the one number every owner needs: what's being wasted, why, and what it's costing.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="log.html">Start Logging Waste</a>
+        <a class="btn btn-ghost" href="dashboard.html">View Dashboard</a>
+      </div>
+    </div>
+
+    <div class="printer">
+      <div class="printer-slot"></div>
+      <div class="ticket">
+        <div class="stamp">Wasted</div>
+        <h4>Waste Log — Mon</h4>
+        <div class="row"><span>Dish</span><span>Rice</span></div>
+        <div class="row"><span>Qty</span><span>1.8 kg</span></div>
+        <div class="row"><span>Reason</span><span>Over-prepped</span></div>
+        <div class="row"><span>Logged by</span><span>K. Otieno</span></div>
+        <div class="row"><span>Time</span><span>21:04</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="problem">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">The Problem</div>
+      <h2>You're losing money and you can't point to why.</h2>
+    </div>
+    <div class="problem-grid">
+      <div class="torn">
+        <div class="tag">Every night</div>
+        <h3>Food goes to waste</h3>
+        <p>Overcooked batches, leftovers, spoiled stock. It happens daily and it happens quietly — nobody's stopping to add it up.</p>
+      </div>
+      <div class="torn">
+        <div class="tag">No record</div>
+        <h3>No one tracks why</h3>
+        <p>Was it over-prepped, or did it just not sell? Without a reason attached, the same mistake repeats next week.</p>
+      </div>
+      <div class="torn">
+        <div class="tag">Rush hour</div>
+        <h3>Spreadsheets don't survive service</h3>
+        <p>Nobody's opening Excel mid-rush. Whatever you use has to work in the ten seconds staff actually have.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">How It Works</div>
+      <h2>Three steps. Staff barely notice step one.</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">01</div>
+        <div>
+          <h3>Log the waste</h3>
+          <p>Dish, quantity, reason, date — a short form staff fill in from a phone or the kitchen tablet, right when it happens. No login friction, no extra steps during a rush.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <div>
+          <h3>Dashboard does the math</h3>
+          <p>Every log rolls up automatically: total kg wasted this week, the top 3 wasted items, and the top reasons behind them. No manual tallying.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <div>
+          <h3>Act on the pattern</h3>
+          <p>When the dashboard says rice is over-prepped every Monday, you cook less rice on Mondays. Guessing becomes a decision.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="dashboard">
+  <div class="wrap">
+    <div class="section-head" style="margin-left:auto;margin-right:auto;text-align:center;">
+      <div class="eyebrow" style="justify-content:center;">After One Week</div>
+      <h2>This is what guessing turns into.</h2>
+    </div>
+    <div class="receipt-wrap">
+      <div class="receipt">
+        <div class="title">Weekly Waste Report</div>
+        <div class="sub">Aug 3 — Aug 9</div>
+        <hr>
+        <div class="line"><span>Total wasted</span><b>18.4 kg</b></div>
+        <hr>
+        <div class="line"><span>Rice</span><b>5.0 kg</b></div>
+        <div class="bar-track"><div class="bar-fill" style="width:82%"></div></div>
+        <div class="line" style="margin-top:14px;"><span>Sukuma wiki</span><b>3.1 kg</b></div>
+        <div class="bar-track"><div class="bar-fill" style="width:51%"></div></div>
+        <div class="line" style="margin-top:14px;"><span>Chapati</span><b>2.6 kg</b></div>
+        <div class="bar-track"><div class="bar-fill" style="width:43%"></div></div>
+        <hr>
+        <div class="line"><span>Top reason</span><b>Over-prepped</b></div>
+        <div class="callout">
+          <span class="g">Rice is #1 wasted — 5kg, mostly over-prepped on Mondays.</span><br>
+          Action: cook less rice on Mondays.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h2>Turn guessing into savings.</h2>
+    <p>Wastebin starts with a form and ends with knowing exactly what's costing you money — and what to do about it.</p>
+    <a class="btn btn-primary" href="log.html">Start logging waste</a>
+    <div class="stack-note">Built with HTML · CSS · JavaScript · localStorage</div>
+    <div class="foot-bottom">Wastebin — a food wastage tracker for restaurants</div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
