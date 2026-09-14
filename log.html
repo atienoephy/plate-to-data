@@ -30,19 +30,19 @@
                 <form id="wasteForm" style="background:var(--paper); color:var(--ink); padding:32px; border-radius:4px;">
                     <!-- Dish -->
                     <div style="margin-bottom:20px;">
-                        <label style="font-family:var(--mono); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:6px;">Dish / Item</label>
+                        <label for="dish" style="font-family:var(--mono); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:6px;">Dish / Item</label>
                         <input type="text" id="dish" placeholder="e.g. Rice, Sukuma Wiki, Chapati" required style="width:100%; padding:12px; border:1px solid var(--line); font-family:var(--body); font-size:1rem; background:white; border-radius:2px;">
                     </div>
 
                     <!-- Quantity -->
                     <div style="margin-bottom:20px;">
-                        <label style="font-family:var(--mono); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:6px;">Quantity (kg)</label>
+                        <label for="quantity" style="font-family:var(--mono); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:6px;">Quantity (kg)</label>
                         <input type="number" id="quantity" placeholder="e.g. 1.5" step="0.1" min="0" required style="width:100%; padding:12px; border:1px solid var(--line); font-family:var(--body); font-size:1rem; background:white; border-radius:2px;">
                     </div>
 
                     <!-- Reason -->
                     <div style="margin-bottom:20px;">
-                        <label style="font-family:var(--mono); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:6px;">Reason for Waste</label>
+                        <label for="reason" style="font-family:var(--mono); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:6px;">Reason for Waste</label>
                         <select id="reason" required style="width:100%; padding:12px; border:1px solid var(--line); font-family:var(--body); font-size:1rem; background:white; border-radius:2px;">
                             <option value="">Select a reason...</option>
                             <option value="Over-prepped">Over-prepped</option>
@@ -54,9 +54,15 @@
                         </select>
                     </div>
 
+                    <!-- Other Reason (hidden unless "Other" is picked) -->
+                    <div id="otherReasonWrap" style="display:none; margin-bottom:20px;">
+                        <label for="otherReason" style="font-family:var(--mono); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:6px;">Please specify</label>
+                        <input type="text" id="otherReason" placeholder="e.g. Power outage, wrong order made" style="width:100%; padding:12px; border:1px solid var(--line); font-family:var(--body); font-size:1rem; background:white; border-radius:2px;">
+                    </div>
+
                     <!-- Staff Name -->
                     <div style="margin-bottom:24px;">
-                        <label style="font-family:var(--mono); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:6px;">Logged by (optional)</label>
+                        <label for="staff" style="font-family:var(--mono); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:6px;">Logged by (optional)</label>
                         <input type="text" id="staff" placeholder="Your name" style="width:100%; padding:12px; border:1px solid var(--line); font-family:var(--body); font-size:1rem; background:white; border-radius:2px;">
                     </div>
 
@@ -74,6 +80,23 @@
         </div>
     </section>
 
+    <script>
+        // Show the "Please specify" field only when "Other" is picked
+        var reasonSelect = document.getElementById("reason");
+        var otherWrap = document.getElementById("otherReasonWrap");
+        var otherInput = document.getElementById("otherReason");
+
+        reasonSelect.addEventListener("change", function () {
+            if (reasonSelect.value === "Other") {
+                otherWrap.style.display = "block";
+                otherInput.setAttribute("required", "required");
+            } else {
+                otherWrap.style.display = "none";
+                otherInput.removeAttribute("required");
+                otherInput.value = "";
+            }
+        });
+    </script>
     <script src="app.js"></script>
 </body>
 </html>
