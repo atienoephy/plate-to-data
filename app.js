@@ -64,15 +64,25 @@ function calculateDashboard() {
         };
     }
 
-    const totalWaste = logs.reduce((sum, log) => {
+    const now = new Date();
+    const startOfWeek = new Date(now);
+    const day = now.getDay();
+
+    startOfWeek.setDate(now.getDate() - (day === 0 ? 6 : day - 1));
+    startOfWeek.setHours(0, 0, 0, 0);
+
+    const thisWeekLogs = logs.filter(log => {
+        return new Date(log.date) >= startOfWeek;
+    });
+const totalWaste = thisWeekLogs.reduce((sum, log) => {
         return sum + log.quantity;
     }, 0);
 
     const itemCounts = {};
 
-    logs.forEach(log => {
-        itemCounts[log.dish] = (itemCounts[log.dish] || 0) + log.quantity;
-    });
+   logs.forEach(log => {
+    itemCounts[log.dish] = (itemCounts[log.dish] || 0) + log.quantity;
+});
 
     const topItems = Object.entries(itemCounts)
         .sort((a, b) => b[1] - a[1])
@@ -84,10 +94,9 @@ function calculateDashboard() {
 
     const reasonCounts = {};
 
-    logs.forEach(log => {
-        reasonCounts[log.reason] = (reasonCounts[log.reason] || 0) + 1;
-    });
-
+  thisWeekLogs.forEach(log => {
+    reasonCounts[log.reason] = (reasonCounts[log.reason] || 0) + 1;
+});
     const topReasons = Object.entries(reasonCounts)
         .sort((a, b) => b[1] - a[1])
         .slice(0, 3)
@@ -97,10 +106,9 @@ function calculateDashboard() {
         }));
 
     const dayCounts = {};
-
-    logs.forEach(log => {
-        dayCounts[log.day] = (dayCounts[log.day] || 0) + log.quantity;
-    });
+thisWeekLogs.forEach(log => {
+    dayCounts[log.day] = (dayCounts[log.day] || 0) + log.quantity;
+});
 
     const worstDay = Object.entries(dayCounts)
         .sort((a, b) => b[1] - a[1])
@@ -115,15 +123,15 @@ function calculateDashboard() {
         insight = `${topItems[0].name} is your biggest waste item. Most waste is caused by ${topReasons[0].reason}, with ${worstDay.day} being the highest-waste day.`;
     }
 
-    return {
-        totalWaste: totalWaste,
-        totalLogs: logs.length,
-        topItems: topItems,
-        topReasons: topReasons,
-        worstDay: worstDay,
-        insight: insight,
-        logs: logs
-    };
+return {
+    totalWaste: totalWaste,
+    totalLogs: thisWeekLogs.length,
+    topItems: topItems,
+    topReasons: topReasons,
+    worstDay: worstDay,
+    insight: insight,
+    logs: thisWeekLogs
+};
 }
 
 function renderDashboard() {
